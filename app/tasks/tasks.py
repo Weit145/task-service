@@ -3,12 +3,12 @@ from pathlib import Path
 
 from jinja2 import Template
 
-from app.core.celery.celery import app
+from app.tasks.celery import app
 from app.tasks.email.email import send_email
 
 
 @app.task(name="send_email")
-def send_message(token:str, username:str,email:str):
+def send_message_email(token:str, username:str,email:str):
     html_path = Path("app/templates/pod_reg.html")
     html_content = html_path.read_text(encoding="utf-8")
 
@@ -29,4 +29,4 @@ def send_message(token:str, username:str,email:str):
             html_content=rendered_html,
         )
     )
-    return "Письмо отправлено успешно"
+    return 
