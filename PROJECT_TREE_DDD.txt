@@ -1,0 +1,84 @@
+task-service/
+├── app/
+│   ├── domain/
+│   │   ├── __init__.py
+│   │   ├── entities/
+│   │   │   ├── __init__.py
+│   │   │   ├── email_task.py
+│   │   │   └── notification_task.py
+│   │   ├── value_objects/
+│   │   │   ├── __init__.py
+│   │   │   ├── email_address.py
+│   │   │   └── task_status.py
+│   │   ├── events/
+│   │   │   ├── __init__.py
+│   │   │   ├── email_sent_event.py
+│   │   │   └── task_failed_event.py
+│   │   ├── repositories/
+│   │   │   ├── __init__.py
+│   │   │   ├── iemail_task_repository.py
+│   │   │   └── inotification_repository.py
+│   │   └── exceptions.py
+│   │
+│   ├── application/
+│   │   ├── __init__.py
+│   │   ├── email/
+│   │   │   ├── __init__.py
+│   │   │   ├── dtos/
+│   │   │   │   ├── inputs.py
+│   │   │   │   └── outputs.py
+│   │   │   ├── services/
+│   │   │   │   ├── send_verification_email_service.py
+│   │   │   │   ├── send_notification_email_service.py
+│   │   │   │   └── resend_email_service.py
+│   │   │   └── event_handlers/
+│   │   │       └── email_event_handler.py
+│   │   └── celery_tasks/
+│   │       ├── __init__.py
+│   │       ├── email_tasks.py
+│   │       └── notification_tasks.py
+│   │
+│   ├── infrastructure/
+│   │   ├── __init__.py
+│   │   ├── email_service/
+│   │   │   ├── __init__.py
+│   │   │   ├── smtp_email_sender.py
+│   │   │   └── iemail_sender.py
+│   │   ├── message_queue/
+│   │   │   ├── __init__.py
+│   │   │   ├── celery_config.py
+│   │   │   └── celery_task_queue.py
+│   │   ├── event_consumers/
+│   │   │   ├── __init__.py
+│   │   │   ├── kafka_event_consumer.py
+│   │   │   └── user_event_consumer.py
+│   │   └── kafka_helper.py
+│   │
+│   ├── presentation/
+│   │   ├── __init__.py
+│   │   ├── celery/
+│   │   │   ├── __init__.py
+│   │   │   ├── registered_tasks.py
+│   │   │   └── task_routes.py
+│   │   └── templates/
+│   │       ├── verification_email.html
+│   │       ├── notification_email.html
+│   │       └── pod_reg.html
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   └── config.py
+│   │
+│   └── main.py
+│
+├── tests/
+│   ├── __init__.py
+│   ├── domain/
+│   ├── application/
+│   ├── infrastructure/
+│   └── presentation/
+│
+├── Dockerfile
+├── docker-compose.yml
+├── pyproject.toml
+└── README.md

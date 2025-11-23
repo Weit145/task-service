@@ -1,0 +1,29 @@
+task-service/
+├── app/
+│   ├── core/
+│   │   ├── __pycache__/
+│   │   └── config.py
+│   │
+│   ├── kafka/
+│   │   ├── kf_helper.py
+│   │   ├── repositories/
+│   │   │   └── kafka_repositories.py
+│   │   └── services/
+│   │       └── kafka_service.py
+│   │
+│   ├── tasks/
+│   │   ├── __pycache__/
+│   │   ├── celery.py
+│   │   ├── tasks.py
+│   │   └── email/
+│   │       └── email.py
+│   │
+│   ├── templates/
+│   │   └── pod_reg.html
+│   │
+│   └── main.py
+│
+├── Dockerfile
+├── docker-compose.yml
+├── pyproject.toml
+└── README.md
