@@ -4,7 +4,7 @@ from app.core.config import settings
 
 app = Celery(
     "app/core",
-    broker = settings.broker,
+    broker=settings.broker,
     backend="rpc://",
 )
 

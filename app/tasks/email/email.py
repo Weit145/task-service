@@ -1,4 +1,3 @@
-import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import aiosmtplib
@@ -26,7 +25,6 @@ async def send_email(
     if html_content:
         html_message = MIMEText(html_content, "html", "utf-8")
         message.attach(html_message)
-
 
     await aiosmtplib.send(
         message,

@@ -8,7 +8,7 @@ from app.tasks.email.email import send_email
 
 
 @app.task(name="send_email")
-def send_message_email(token:str, username:str,email:str):
+def send_message_email(token: str, username: str, email: str):
     html_path = Path("app/templates/pod_reg.html")
     html_content = html_path.read_text(encoding="utf-8")
 
@@ -19,7 +19,7 @@ def send_message_email(token:str, username:str,email:str):
         site_url="http://localhost:5173/",
         support_email="support@kload.com",
         unsubscribe_url="http://127.0.0.1:8000/unsubscribe",
-        year=2025
+        year=2025,
     )
     asyncio.run(
         send_email(
@@ -29,4 +29,4 @@ def send_message_email(token:str, username:str,email:str):
             html_content=rendered_html,
         )
     )
-    return 
+    return
