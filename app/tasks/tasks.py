@@ -6,6 +6,7 @@ from jinja2 import Template
 from app.tasks.celery import app
 from app.tasks.email.email import send_email
 
+
 @app.task(name="send_email")
 def send_message_email(token: str, username: str, email: str):
     html_path = Path("app/templates/pod_reg.html")
@@ -32,8 +33,8 @@ def send_message_email(token: str, username: str, email: str):
 
 
 @app.task(name="check_verified")
-def send_check_verified(id:int):
+def send_check_verified(id: int):
     payload = {"id": id}
     from app.kafka.repositories.kafka_repositories import KafkaRepository
-    asyncio.run( KafkaRepository().send_message("check_verified", payload)
-    )
+
+    asyncio.run(KafkaRepository().send_message("check_verified", payload))

@@ -11,8 +11,5 @@ class EmailService:
         )
 
     @staticmethod
-    def check_verified(data : dict):
-        send_check_verified.apply_async(
-            args=[data.get("id")],
-            countdown=30*60
-        )
+    def check_verified(data: dict):
+        send_check_verified.apply_async(args=[data.get("id")], countdown=30 * 60)
