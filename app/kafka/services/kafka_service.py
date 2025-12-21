@@ -14,5 +14,5 @@ class EmailService:
     def check_verified(data : dict):
         send_check_verified.apply_async(
             args=[data.get("id")],
-            countdown=1*60
+            countdown=30*60
         )
