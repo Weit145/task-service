@@ -34,15 +34,13 @@ class KafkaRepository:
             async for msg in consumer:
                 data = json.loads(msg.value.decode("utf-8"))
                 EmailService.process_registration_message(data)
+                EmailService.check_verified(data)
 
     async def wait_kafka(self, topic: str, group_id: str, retries=10000, delay=20):
         for i in range(retries):
             try:
-                async with kf_helper.transaction_consumer(
-                    topics=topic, group_id=group_id
-                ) as consumer:
-                    print(f"Kafka not ready yet ({i + 1}/{retries}): {consumer}")
-                    return
+                await self.create_topic(topic)
+                return
             except Exception as e:
                 print(f"Kafka not ready yet ({i + 1}/{retries}): {e}")
                 await asyncio.sleep(delay)
