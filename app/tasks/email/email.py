@@ -29,7 +29,7 @@ async def send_email(
     await aiosmtplib.send(
         message,
         hostname="smtp.gmail.com",
-        port=587,
+        port=465,
         username=sender_email,
         password=app_password,
         use_tls=True,
