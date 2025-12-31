@@ -14,11 +14,11 @@ def send_message_email(token: str, username: str, email: str):
 
     template = Template(html_content)
     rendered_html = template.render(
-        confirm_url=f"http://localhost:5173/confirm/?token_pod={token}",
+        confirm_url=f"https://kload.ru/confirm/?token_pod={token}",
         username=username,
-        site_url="http://localhost:5173/",
-        support_email="support@kload.com",
-        unsubscribe_url="http://127.0.0.1:8000/unsubscribe",
+        site_url="https://kload.ru/",
+        support_email="kloader145@gmail.com",
+        unsubscribe_url="https://kload.ru/",
         year=2025,
     )
     asyncio.run(
